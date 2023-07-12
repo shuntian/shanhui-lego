@@ -27,6 +27,7 @@
   justify-content: center;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  cursor: pointer;
 }
 
 .template-item:hover .hover-item {
@@ -57,5 +58,10 @@
   left: 6px;
 }
 
+.template-item .ant-card-cover  img {
+  transition: all ease-in .2s;
+}
 
-
+.template-item:hover img {
+  transform: scale(1.25);
+}
