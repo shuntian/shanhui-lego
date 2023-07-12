@@ -4,16 +4,30 @@ html, body, #root {
 }
 
 .app {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
-.app .header {
+.app.single-page {
+  height: 100%;
+}
 
+.app .page-title {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.app .content-container {
+  background-color: #fff;
+  padding: 0 24px 24px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .app .footer {
-  
+  background-color: #666;
 }

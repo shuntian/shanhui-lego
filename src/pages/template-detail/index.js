@@ -7,22 +7,20 @@ const headerStyle = {
   backgroundColor: '#999'
 };
 
-
 const footerStyle = {
   backgroundColor: '#999'
 };
 
 const contentStyle = {
   textAlign: 'center',
-  backgroundColor: '#f0f0f0'
 };
 
-export default function Template() {
+export default function TemplateDetail() {
   return (
     <Layout>
       <Header style={headerStyle}>header</Header>
       <Content style={contentStyle}>
-        Template
+        TemplateDetail
         <Link to="/editor">编辑</Link>
       </Content>
       <Footer style={footerStyle}>footer</Footer>

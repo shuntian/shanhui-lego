@@ -1,10 +1,11 @@
 import React from 'react'
-import { Route, Router } from 'react-router'
+import { createBrowserRouter } from 'react-router-dom';
 import Editor from '../pages/editor';
 import Login from '../pages/login';
-import Template from '../pages/template';
-import TemplateList from '../pages/template-list';
-import { createBrowserRouter } from 'react-router-dom';
+import Home from '../pages/home';
+import TemplateDetail from '../pages/template-detail';
+import BaseLayout from '../layout/base-layout';
+import Works from '../pages/works';
 
 import '../assets/css/reset.css';
 import '../assets/css/layout.css';
@@ -13,32 +14,30 @@ import '../assets/css/layout.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Login />
+    element: <BaseLayout />,
+    children: [
+      {
+        path: "",
+        element: <Home />
+      },
+      {
+        path: '/template/:id',
+        element: <TemplateDetail />
+      },
+      {
+        path: '/works',
+        element: <Works />
+      },
+    ]
   },
   {
-    path: '/templates',
-    element: <TemplateList />
-  },
-  {
-    path: '/template/:id',
-    element: <Template />
-  },
-  {
-    path: '/editor',
+    path: '/editor/:id',
     element: <Editor />
   },
-  
+  {
+    path: '/login',
+    element: <Login />
+  },
 ]);
 
 export default router;
-
-// export default function AppRouter() {
-//   return (
-//     <Router>
-//       <Route path='/' Component={<Login />}></Route>
-//       <Route path='/templates' Component={<TemplateList />}></Route>
-//       <Route path='/template/:id' Component={<Template />}></Route>
-//       <Route path='/editor' Component={<Editor />}></Route>
-//     </Router>
-//   )
-// }

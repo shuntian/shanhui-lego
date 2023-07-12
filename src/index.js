@@ -9,9 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <div className='app'>
-        <RouterProvider router={router}></RouterProvider>
-      </div>
+      <RouterProvider router={router}></RouterProvider>
     </Provider>
   </React.StrictMode>
 );

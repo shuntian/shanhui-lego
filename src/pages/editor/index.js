@@ -13,7 +13,6 @@ const partsStyle = {
 
 const contentStyle = {
   padding: '20px',
-  backgroundColor: '#f0f0f0'
 };
 
 const propStyle = {

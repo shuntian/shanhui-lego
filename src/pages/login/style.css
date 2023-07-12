@@ -1,0 +1,45 @@
+.login-container {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.login-container .login-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: url('../../assets/imgs/login.png');
+  color: #fff;
+}
+
+.login-container .login-left__img {
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 32px;
+}
+
+.login-container .login-left__title {
+  margin-bottom: 6px;
+  height: 32px;
+  opacity: 0.6;
+}
+
+.login-container .login-left__message {
+  opacity: 0.3;
+}
+
+.login-container .login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container .login-right__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
