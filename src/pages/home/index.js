@@ -1,4 +1,3 @@
-import { Divider, Row } from 'antd'
 import React from 'react'
 import Banner from '../../components/banner'
 import HotTitle from '../../components/hot-title'

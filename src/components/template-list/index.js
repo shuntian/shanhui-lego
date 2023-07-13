@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { Row } from 'antd';
+import { Button, Row } from 'antd';
 import TemplateItem from './template-item';
 import { listTemplates } from '../../store/template-slice';
 
@@ -14,10 +14,15 @@ export default function TemplateList() {
   }, []);
 
   return (
-    <Row gutter={16} className='template-list'>
-      {templates.map((item, index) => {
-        return <TemplateItem key={index} template={item}/>
-      })}
-    </Row>
+    <>
+      <Row gutter={16} className='template-list'>
+        {templates.map((item, index) => {
+          return <TemplateItem key={index} template={item}/>
+        })}
+      </Row>
+      <Row className='load-more'>
+        <Button type='primary'>加载更多</Button>
+      </Row>
+    </>
   )
 }

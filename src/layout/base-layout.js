@@ -1,6 +1,7 @@
 import Layout, { Content, Footer, Header } from 'antd/es/layout/layout'
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import LegoFooter from '../components/footer'
 
 export default function BaseLayout() {
   return (
@@ -12,9 +13,7 @@ export default function BaseLayout() {
       <Content>
         <Outlet />
       </Content>
-      <Footer>
-        footer
-      </Footer>
+      <LegoFooter />
     </Layout>
   )
 }
