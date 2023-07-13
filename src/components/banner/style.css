@@ -1,0 +1,36 @@
+.banner {
+  display: flex;
+  position: relative;
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.banner-text__header {
+  color: #fff;
+  text-shadow: 0 0 1px rgba(68,92,116,.02), 0 2px 8px rgba(57,76,96,.15);
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+.banner-text__search {
+  width: 40%;
+  box-shadow: 0 12px 24px 0 rgba(30, 29, 32, .8);;
+}
+

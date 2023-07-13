@@ -1,0 +1,31 @@
+.welcome-container {
+  background: #f2f2f2;
+}
+
+.welcome-container-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-item  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.feature-item .anticon {
+  font-size: 60px;
+  color: #1677ff;
+}
+
+.feature-item h3 {
+  margin: 5px 0;
+  font-size: 19px;
+  color: #333;
+}
+
+.feature-item p {
+  color: #666;
+}
