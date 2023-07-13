@@ -1,4 +1,4 @@
-import Layout, { Content, Footer, Header } from 'antd/es/layout/layout'
+import Layout, { Content, Header } from 'antd/es/layout/layout'
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import LegoFooter from '../components/footer'

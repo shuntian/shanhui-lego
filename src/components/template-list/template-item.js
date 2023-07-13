@@ -1,14 +1,9 @@
 import { Button, Card, Col, Tag } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import React, { useCallback, useMemo } from 'react'
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useMemo } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function TemplateItem({template}) {
-  const navigate = useNavigate();
-  const onTemplateToggle = useCallback(() => {
-    const path = `/template/${template}`;
-    navigate(path);
-  }, [navigate, template]);
   const img = useMemo(() => {
     return (
       <>
@@ -20,7 +15,7 @@ export default function TemplateItem({template}) {
     );
   }, [template])
   return (
-    <Col span={6} onClick={onTemplateToggle} className="template-item" style={{paddingLeft: '8px', paddingRight: '8px'}}>
+    <Col span={6} className="template-item" style={{paddingLeft: '8px', paddingRight: '8px'}}>
       <Link to={`/template/${template.id}`}>
         <Card
           hoverable={true}

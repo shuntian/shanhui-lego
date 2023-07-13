@@ -1,0 +1,44 @@
+.template-detail {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.template-detail-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.cover-img {
+  margin-right: 30px;
+}
+
+.template-info h2 {
+  margin-bottom: 0.5em;
+}
+
+.template-info p {
+  margin-bottom: 1em;
+  color: #999;
+}
+
+.template-info .bar-code-area {
+  margin: 20px 0;
+}
+
+.template-info .bar-code-area .tip {
+  color: #999;
+}
+
+.template-info .bar-code-area .code {
+  width: 120px;
+  height: 120px;
+  background: green;
+}
+
+.template-info .use-button {
+  margin: 30px 0;
+}
+
+.template-info .use-template {
+  margin-right: 20px;
+}
