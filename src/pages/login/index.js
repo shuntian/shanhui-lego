@@ -1,11 +1,20 @@
 import Layout, { Content } from 'antd/es/layout/layout'
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import logo from '../../assets/imgs/logo2.png';
 import LoginForm from './login-form';
 
 import './style.css';
 
 export default function Login() {
+  const user = useSelector(state => state.user.value);
+  const navigate = useNavigate();
+  useLayoutEffect(() => {
+    if (user.isLogin) {
+      navigate('/')
+    }
+  }, [user])
   return (
     <Layout className='app single-page'>
       <Content className='login-container'>

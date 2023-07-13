@@ -1,19 +1,24 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, message } from 'antd';
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
+import { loginAsync } from '../../store/user-slice';
 
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const onLogin = useCallback(() => {
-    navigate('/');
+  const dispatch = useDispatch();
+  const onFinish = useCallback((values) => {
+    dispatch(loginAsync(values.username));
+    message.success('登陆成功, 2s后跳转');
+    setTimeout(() => {
+      navigate('/')
+    }, 2000)
   }, []);
+  const onFinishFailed = useCallback((errorInfo) => {
+    console.log('Failed:', errorInfo);
+  }, []);
+
   return (
     <Form
       name="basic"
@@ -76,7 +81,7 @@ const LoginForm = () => {
           span: 16,
         }}
       >
-        <Button type="primary" htmlType="submit" onClick={onLogin}>
+        <Button type="primary" htmlType="submit">
           Login
         </Button>
         {' '}

@@ -1,0 +1,23 @@
+.lego-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lego-header a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lego-header .header-right {
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.lego-header .header-right .button-item {
+  margin-right: 20px;
+}
+
+.lego-header .header-right .ant-dropdown-button {
+  align-items: center;
+}
