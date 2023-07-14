@@ -18,8 +18,7 @@ export default function TemplateDetail() {
   return (
     <div className='template-detail'>
       <Wrapper>
-
-        <Row>
+        <Row justify={'center'}>
           <Col className='cover-img' span={8}>
             <img src={template.coverImg} alt='img' />
           </Col>
