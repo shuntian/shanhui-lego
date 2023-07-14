@@ -1,8 +1,8 @@
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Button, Col, Row } from 'antd'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import Wrapper from '../../components/wrapper';
 
 import './style.css';
@@ -14,6 +14,11 @@ export default function TemplateDetail() {
     const a = templates.find(item => item.id === parseInt(templateId));
     return a;
   }, [templates, templateId]);
+
+  const navigate = useNavigate();
+  const onTemplateToggle = useCallback(() => {
+    navigate(`/editor/${template.id}`);
+  }, [navigate, template.id]);
   
   return (
     <div className='template-detail'>
@@ -34,7 +39,7 @@ export default function TemplateDetail() {
               <div className='code'></div>
             </div>
             <div className='use-button'>
-              <Button type='primary' size='lg' className='use-template'>使用模版</Button>
+              <Button type='primary' size='lg' className='use-template' onClick={onTemplateToggle}>使用模版</Button>
               <Button type='default' size='lg' className='download-poster'>下载海报图片</Button>
             </div>
           </Col>
