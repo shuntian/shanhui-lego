@@ -1,9 +1,9 @@
-.template-item {
+.work-item {
   position: relative;
   margin-bottom: 20px;
 }
 
-.template-item .ant-card-cover {
+.work-item .ant-card-cover {
   height: 390px;
   position: relative;
   overflow: hidden;
@@ -11,11 +11,11 @@
   border-top-right-radius: 12px;
 }
 
-.template-item .ant-card-hoverable {
+.work-item .ant-card-hoverable {
   box-shadow: 0px 5px 10px 0px rgba(229, 223, 223, 0.1);
 }
 
-.template-item .hover-item {
+.work-item .hover-item {
   position: absolute;
   left: 0;
   top: 0;
@@ -30,43 +30,43 @@
   cursor: pointer;
 }
 
-.template-item:hover .hover-item {
+.work-item:hover .hover-item {
   display: flex;
 }
 
-.template-item .ant-card-body {
+.work-item .ant-card-body {
   padding: 0;
 }
 
-.template-item__title {
+.work-item__title {
   color: #333;
   padding: 10px 12px;
   border-bottom: 1px solid #f2f2f2;
   margin-bottom: 0 !important;
 }
 
-.template-item__info {
+.work-item__info {
   display: flex;
   justify-content: space-between;
   padding: 13px 12px;
   color: #999;
 }
 
-.template-item .tag-list {
+.work-item .tag-list {
   position: absolute;
   top: -4px;
   left: 6px;
 }
 
-.template-item .ant-card-cover  img {
+.work-item .ant-card-cover  img {
   transition: all ease-in .2s;
 }
 
-.template-item:hover img {
+.work-item:hover img {
   transform: scale(1.25);
 }
 
-.template-item .load-more {
+.work-item .load-more {
   display: flex;
   justify-content: center;
 }

@@ -1,8 +1,8 @@
 import { Tabs } from 'antd';
 import Search from 'antd/es/transfer/search';
 import React, { useCallback, useState } from 'react'
-import TemplateList from '../../components/template-list';
 import Wrapper from '../../components/wrapper';
+import WorkList from '../../components/work-list';
 
 import './style.css';
 
@@ -10,22 +10,12 @@ const items = [
   {
     key: 'my-work',
     label: '我的作品',
-    children: (
-      <>
-        <div>我的作品</div>
-        <TemplateList />
-      </>
-    )
+    children: <WorkList />
   },
   {
     key: 'my-template',
     label: '我的模版',
-    children: (
-      <>
-        <div>我的模版</div>
-        <TemplateList />
-      </>
-    )
+    children: <WorkList />
   }
 ]
 
