@@ -29,7 +29,10 @@ export default function LegoHeader() {
       dispatch(logout)
       nav('/login')
     }
-  }, []);
+    if (e.key === 'user-setting') {
+      nav('/settings');
+    }
+  }, [dispatch, nav]);
 
   const onCreateTemplate = () => {
     const id = (Math.random() * 10000).toFixed(0);

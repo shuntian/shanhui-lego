@@ -6,6 +6,7 @@ import Home from '../pages/home';
 import TemplateDetail from '../pages/template-detail';
 import BaseLayout from '../layout/base-layout';
 import Works from '../pages/works';
+import Settings from '../pages/settings';
 
 import '../assets/css/reset.css';
 import '../assets/css/layout.css';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/works',
         element: <Works />
+      },
+      {
+        path: '/settings',
+        element: <Settings />
       },
     ]
   },
