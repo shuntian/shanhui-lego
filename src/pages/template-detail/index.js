@@ -21,8 +21,8 @@ export default function TemplateDetail() {
   }, [navigate, template.id]);
   
   return (
-    <div className='template-detail'>
-      <Wrapper>
+    <Wrapper>
+      <div className='template-detail'>
         <Row justify={'center'}>
           <Col className='cover-img' span={8}>
             <img src={template.coverImg} alt='img' />
@@ -44,7 +44,7 @@ export default function TemplateDetail() {
             </div>
           </Col>
         </Row>
-      </Wrapper>
-    </div>
+      </div>
+    </Wrapper>
   )
 }

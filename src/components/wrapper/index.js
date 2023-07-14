@@ -1,7 +1,7 @@
 import React from 'react'
 
 const style = {
-  padding: '24px',
+  padding: '16px',
   minHeight: '85vh',
   maxWidth: '1200px',
   margin: '0 auto',

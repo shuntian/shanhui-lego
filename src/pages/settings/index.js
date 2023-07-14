@@ -24,7 +24,7 @@ export default function Settings() {
   }, []);
   return (
     <Wrapper>
-      <div className='user-setting'>
+      <div className='user-setting' style={{padding: '24px'}}>
         <h2 className='user-setting-title'>
           个人中心 👮
         </h2>

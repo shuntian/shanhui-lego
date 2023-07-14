@@ -28,11 +28,13 @@ export default function Works() {
   }, [])
   return (
     <Wrapper>
-      <div className='work-title'>
-        <h2>我的作品和模版</h2>
-        <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
+      <div className='my-work'>
+        <div className='work-title'>
+          <h2>我的作品和模版</h2>
+          <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
+        </div>
+        <Tabs defaultActiveKey={active} items={items} onChange={onChange}/>
       </div>
-      <Tabs defaultActiveKey={active} items={items} onChange={onChange}/>
     </Wrapper>
   )
 }
