@@ -25,7 +25,7 @@ export default function Settings() {
   return (
     <Wrapper>
       <div className='user-setting' style={{padding: '24px'}}>
-        <h2 className='user-setting-title'>
+        <h2 className='user-setting-title' style={{marginBottom: '20px'}}>
           个人中心 👮
         </h2>
         <Tabs type='card' defaultActiveKey={active} items={items} onChange={onChange}></Tabs>
