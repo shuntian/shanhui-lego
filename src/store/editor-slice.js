@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 const initState = {
   components: [],
-  currentElement: ''
+  currentElement: null,
 };
 
 export const userSlice = createSlice({
@@ -22,12 +22,15 @@ export const userSlice = createSlice({
         layerName: `图层${components.length + 1}`
       }
       const newComponents = [...components, insertComponent];
-      state.value = {...insertComponent, components: newComponents};
+      state.value = {...state.value, components: newComponents};
     },
+    setActive: (state, action) => {
+      state.value = {...state.value, currentElement: action.payload};
+    }
   }
 });
 
-export const { addItem } = userSlice.actions;
+export const { addItem, setActive } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 

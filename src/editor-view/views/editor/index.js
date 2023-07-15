@@ -18,7 +18,10 @@ export default function Editor() {
           <div className='body-container' style={{height: '560px'}}>
             {components && components.map(item => {
               return (
-                <PartWrapper key={item.id} props={item.props}>
+                <PartWrapper 
+                  key={item.id} 
+                  item={item}
+                >
                   <LText {...item.props}/>
                 </PartWrapper>
               )
