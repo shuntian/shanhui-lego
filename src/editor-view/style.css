@@ -34,12 +34,11 @@
   padding: 0 24px 24px;
 }
 
-.editor-view-content .properties-container {
+.editor-view-content .settings-container {
   flex: 0 0 300px;
   width: 300px;
   max-width: 300px;
   min-width: 300px;
   background: #999;
-  border-right: 1px solid #888;
   background: #fff;
 }

@@ -1,0 +1,13 @@
+.props-container .prop-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.props-container .prop-item label {
+  width: 28%;
+}
+
+.props-container .prop-item .prop-component {
+  width: 70%;
+}

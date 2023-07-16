@@ -1,12 +1,14 @@
 import React, { useMemo } from 'react'
 import { useDispatch } from 'react-redux'
-import { updateItem } from '../../../store/editor-slice';
-import { useCurrentElement } from '../../hooks/use-current-element';
-import { mapPropsToForms } from '../../properties';
-import { capitalizeFirstLetter } from '../../utils';
+import { updateItem } from '../../../../store/editor-slice';
+import { useCurrentElement } from '../../../hooks/use-current-element';
+import { mapPropsToForms } from '../../../properties';
+import { capitalizeFirstLetter } from '../../../utils';
 import PropertyItem from './property-item';
 
-export default function PropertiesSetting() {
+import './style.css';
+
+export default function PropertySettings() {
   const dispatch = useDispatch();
   const currentElement = useCurrentElement();
 
@@ -37,7 +39,7 @@ export default function PropertiesSetting() {
   }, [currentElement, dispatch])
 
   return (
-    <div className='properties-container'>
+    <div className='props-container'>
       {finalComponents && finalComponents.map((item, index) => {
         return <PropertyItem key={index} item={item} />
       })}

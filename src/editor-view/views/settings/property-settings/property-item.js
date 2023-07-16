@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useMemo } from 'react'
 
 export default function PropertyItem({item}) {
@@ -17,18 +18,21 @@ export default function PropertyItem({item}) {
     });
   }, [SubComponent, options])
 
-  return (
-    <div>
-      <div>{item.text}</div>
-      {React.cloneElement(Component, 
-        {
-          [valueProp]: item.value,
-          ...extraProps,
-          ...events
-        },
-        children
-      )}
-    </div>
+  const className = classNames('prop-component', item.name);
 
+  return (
+    <div className='prop-item'>
+      <label>{item.text}</label>
+      <div className={className}>
+        {React.cloneElement(Component, 
+          {
+            [valueProp]: item.value,
+            ...extraProps,
+            ...events
+          },
+          children
+        )}
+      </div>
+    </div>
   );
 }

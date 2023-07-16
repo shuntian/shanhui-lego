@@ -2,7 +2,7 @@ import React from 'react'
 import Editor from './views/editor'
 import EditorHeader from './views/header'
 import PartList from './views/part-list'
-import PropertiesSetting from './views/properties'
+import Settings from './views/settings'
 
 import './style.css';
 
@@ -14,7 +14,7 @@ export default function EditorView() {
       <div className='editor-view-content'>
         <PartList />
         <Editor />
-        <PropertiesSetting />
+        <Settings />
       </div>
     </div>
   )
