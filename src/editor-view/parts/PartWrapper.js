@@ -88,7 +88,9 @@ export default function PartWrapper({children, item}) {
       onClick={onWrapperClick}
       onMouseDown={startMove}
     >
-      {children}
+      <div className='move-wrapper'>
+        {children}
+      </div>
     </div>
   )
 }
