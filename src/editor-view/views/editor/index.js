@@ -17,6 +17,7 @@ export default function Editor() {
         <div className='preview-list' id="canvas-area">
           <div className='body-container' style={page.props}>
             {components && components.map(item => {
+              if (item.isHidden) return null;
               return (
                 <PartWrapper 
                   key={item.id} 
