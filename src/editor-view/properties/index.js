@@ -2,6 +2,7 @@ import { BoldOutlined, ItalicOutlined, UnderlineOutlined } from "@ant-design/ico
 import { InputNumber, Radio, Select, Slider } from "antd";
 import Input from "antd/es/input/Input";
 import TextArea from "antd/es/input/TextArea";
+import ColorPicker from "./color-picker";
 import IconSwitch from "./icon-switch";
 
 const fontFamilyArr = [
@@ -90,6 +91,14 @@ export const mapPropsToForms = {
     afterTransform: (v) => v ? 'underline' : 'normal',
     valueProp: 'checked',
     extraProps: { icon: <UnderlineOutlined />, tip: '下划线'}
+  },
+  color: {
+    component: <ColorPicker />,
+    text: '字体颜色'
+  },
+  backgroundColor: {
+    component: <ColorPicker />,
+    text: '背景颜色'
   },
   url: {
     ...defaultHandler,

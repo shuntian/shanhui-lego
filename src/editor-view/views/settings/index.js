@@ -32,7 +32,7 @@ export default function Settings() {
   }, []);
 
   return (
-    <div className='settings-container' style={{padding: '20px'}}>
+    <div className='settings-container'>
       <Tabs type='card' defaultActiveKey={active} items={items} onChange={onChange}/>
     </div>
   );
