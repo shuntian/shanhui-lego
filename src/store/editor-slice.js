@@ -55,19 +55,30 @@ export const userSlice = createSlice({
       });
       state.value = {...state.value, components: newComponents};
     },
+    updateItemByElementId: (state, action) => {
+      const { components } = state.value;
+      const { id, key, value } = action.payload;
+      const newComponents = components.map(item => {
+        if (item.id === id) {
+          item[key] = value;
+          return item
+        }
+        return item;
+      });
+      state.value = {...state.value, components: newComponents};
+    },
     updatePage: (state, action) => {
       const { key, value } = action.payload;
       const { page } = state.value;
 
       const props = { ...page.props, [key]: value };
-      console.log(props);
       const newPage = {...page, props: props};
       state.value = {...state.value, page: newPage};
     }
   }
 });
 
-export const { addItem, setActive, updateItem, updatePage } = userSlice.actions;
+export const { addItem, setActive, updateItem, updateItemByElementId, updatePage } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 

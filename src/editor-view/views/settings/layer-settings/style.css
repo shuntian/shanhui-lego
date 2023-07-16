@@ -1,0 +1,30 @@
+.layer-setting-container {
+
+}
+
+.layer-setting-container .layer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #d9d9d9;
+}
+
+.layer-setting-container .layer-list li {
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-bottom-color: #f0f0f0;
+  padding: 10px 15px;
+  transition: all .5s ease-out;
+  cursor: pointer;
+}
+
+.layer-setting-container .layer-list li > button {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.layer-setting-container .layer-list li > button:last-child {
+  cursor: move;
+  margin-left: auto;
+}

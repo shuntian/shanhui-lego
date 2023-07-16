@@ -1,4 +1,4 @@
-import { Collapse } from 'antd';
+import { Collapse, Empty } from 'antd';
 import { difference } from 'lodash-es';
 import React, { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
@@ -62,7 +62,10 @@ export default function PropertySettings() {
 
   return (
     <div className='props-container'>
-      <Collapse accordion onChange={onChange} items={items} />
+      {!currentElement && <Empty description="在画布中选择元素并开始编辑"/>}
+      {currentElement && (
+        <Collapse accordion onChange={onChange} items={items} />
+      )}
     </div>
   )
 }
