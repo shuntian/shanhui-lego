@@ -1,48 +1,68 @@
-import React, { useMemo } from 'react'
+import { Collapse } from 'antd';
+import { difference } from 'lodash-es';
+import React, { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateItem } from '../../../../store/editor-slice';
+import { defaultEditGroups } from '../../../config/style-config';
 import { useCurrentElement } from '../../../hooks/use-current-element';
-import { mapPropsToForms } from '../../../properties';
-import { capitalizeFirstLetter } from '../../../utils';
-import PropertyItem from './property-item';
+import PropertyGroup from './property-group';
 
 import './style.css';
 
 export default function PropertySettings() {
-  const dispatch = useDispatch();
-  const currentElement = useCurrentElement();
 
-  const finalComponents = useMemo(() => {
-   return currentElement && Object.keys(currentElement.props).reduce((result, propKey) => {
-    const value = currentElement.props[propKey];
-    const item = mapPropsToForms[propKey];
-    if (item) {
-      const { valueProp = 'value', eventName = 'change', initialTransform, afterTransform } = item;
-      const newItem = {
-        ...item,
-        value: initialTransform ? initialTransform(value) : value,
-        valueProp,
-        eventName,
-        events: {
-          ['on' + capitalizeFirstLetter(eventName)]: (e) => {
-            console.log(e);
-            const value = afterTransform ? afterTransform(e) : e;
-            console.log(value);
-            dispatch(updateItem({key: propKey, value}));
-          }
-        }
-      }
-      result.push(newItem);
-    }
-    return result
-   }, []);
-  }, [currentElement, dispatch])
+  const dispatch = useDispatch();
+  const updatePropItem = useCallback((e) => {
+    dispatch(updateItem(e))
+  }, [dispatch]);
+  
+  const currentElement = useCurrentElement();
+  const editGroups = useMemo(() => {
+    if (!currentElement) return [];
+    const normalProps = defaultEditGroups.reduce((prev, current) => {
+      return [...prev, ...current.items];
+    }, []);
+  
+    const specialProps = difference(Object.keys(currentElement?.props), normalProps);
+  
+    const newGroups = [
+      {
+        text: '基本属性',
+        items: specialProps,
+      },
+      ...defaultEditGroups,
+    ];
+
+    return newGroups.map(group => {
+      const propsMap = {};
+      group.items.forEach(item => {
+        const key = item;
+        propsMap[key] = currentElement.props[key];
+      })
+      return {
+        ...group,
+        props: propsMap
+      };
+    });
+  }, [currentElement]);
+
+  const items = useMemo(() => {
+    return editGroups.map(group => {
+      return {
+        key: group.text,
+        label: group.text,
+        children: <PropertyGroup props={group.props} updatePropItem={updatePropItem} />
+      };
+    })
+  }, [editGroups, updatePropItem]);
+
+  const onChange = useCallback((key) => {
+    console.log(key);
+  }, []);
 
   return (
     <div className='props-container'>
-      {finalComponents && finalComponents.map((item, index) => {
-        return <PropertyItem key={index} item={item} />
-      })}
+      <Collapse onChange={onChange} items={items} />
     </div>
   )
 }
