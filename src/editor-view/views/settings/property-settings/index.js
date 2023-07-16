@@ -62,7 +62,7 @@ export default function PropertySettings() {
 
   return (
     <div className='props-container'>
-      <Collapse onChange={onChange} items={items} />
+      <Collapse accordion onChange={onChange} items={items} />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import Input from "antd/es/input/Input";
 import TextArea from "antd/es/input/TextArea";
 import ColorPicker from "./color-picker";
 import IconSwitch from "./icon-switch";
+import ShadowPicker from "./shadow-picker";
 
 const fontFamilyArr = [
   { text: '宋体', value: '"SimSun","STSong"' },
@@ -99,6 +100,78 @@ export const mapPropsToForms = {
   backgroundColor: {
     component: <ColorPicker />,
     text: '背景颜色'
+  },
+  width: {
+    text: '宽度',
+    ...pxToNumberHandler,
+  },
+  height: {
+    text: '高度',
+    ...pxToNumberHandler,
+  },
+  paddingLeft: {
+    text: '左边距',
+    ...pxToNumberHandler,
+  },
+  paddingRight: {
+    text: '右边距',
+    ...pxToNumberHandler,
+  },
+  paddingTop: {
+    text: '上边距',
+    ...pxToNumberHandler,
+  },
+  paddingBottom: {
+    text: '下边距',
+    ...pxToNumberHandler,
+  },
+  borderStyle: {
+    ...defaultHandler,
+    component: <Select />,
+    subComponent: <Select.Option />,
+    text: '边框类型',
+    options: [
+      { value: 'none', text: '无' },
+      { value: 'solid', text: '实线' },
+      { value: 'dashed', text: '破折线' },
+      { value: 'dotted', text: '点状线' }
+    ]
+  },
+  borderColor: {
+    ...defaultHandler,
+    component: <ColorPicker />,
+    text: '边框颜色'
+  },
+  borderWidth: {
+    ...pxToNumberHandler,
+    component: <Slider />,
+    text: '边框宽度',
+    extraProps: { min: 0, max: 20 }
+  },
+  borderRadius: {
+    ...pxToNumberHandler,
+    component: <Slider />,
+    text: '边框圆角',
+    extraProps: { min: 0, max: 200 }
+  },
+  opacity: {
+    component: <Slider />,
+    text: '透明度',
+    initialTransform: (v) => v ? v * 100 : 100,
+    afterTransform: (e) => (e / 100),
+    extraProps: { min: 0, max: 100, reverse: true }
+  },
+  boxShadow: {
+    component: <ShadowPicker />
+  },
+  // commonComponentProps - positions
+  left: {
+    ...pxToNumberHandler,
+    text: 'X轴坐标'
+  },
+  top: {
+    ...pxToNumberHandler,
+    text: 'Y轴坐标'
   },
   url: {
     ...defaultHandler,
