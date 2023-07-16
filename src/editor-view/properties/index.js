@@ -173,8 +173,21 @@ export const mapPropsToForms = {
     ...pxToNumberHandler,
     text: 'Y轴坐标'
   },
+  // commonComponentProps - actions and urls
+  // actions
+  actionType: {
+    ...defaultHandler,
+    component: <Select />,
+    subComponent: <Select.Option />,
+    text: '点击',
+    options: [
+      { value: '', text: '无' },
+      { value: 'to', text: '跳转到 URL' }
+    ]
+  },
   url: {
     ...defaultHandler,
-    text: '链接',
-  }
+    afterTransform: (e) => e.target.value,
+    text: '链接'
+  },
 };

@@ -1,6 +1,5 @@
 import { Slider } from 'antd';
 import React, { useCallback, useMemo } from 'react'
-import { validate } from 'uuid';
 import ColorPicker from '../color-picker'
 
 export default function ShadowPicker({value, onChange}) {

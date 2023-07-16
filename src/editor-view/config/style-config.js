@@ -48,6 +48,8 @@ export const imageDefaultProps = {
 export const textStylePropNames = without(Object.keys(textDefaultProps), 'actionType', 'url', 'text')
 export const imageStylePropsNames = without(Object.keys(imageDefaultProps), 'src')
 
+console.log(textStylePropNames);
+
 export const defaultEditGroups = [
   {
     text: '尺寸',
