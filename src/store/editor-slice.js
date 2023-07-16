@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 } from 'uuid';
 
 const initState = {
   components: [],
@@ -23,14 +22,9 @@ export const userSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      const { payload: componentProps } = action; 
       const { components } = state.value;
-      const insertComponent = {
-        id: v4(),
-        name: componentProps.name,
-        props: componentProps,
-        layerName: `图层${components.length + 1}`
-      }
+      const { payload: insertComponent } = action; 
+      insertComponent.layerName = `图层${components.length + 1}`
       const newComponents = [...components, insertComponent];
       state.value = {...state.value, components: newComponents};
     },
@@ -67,6 +61,19 @@ export const userSlice = createSlice({
       });
       state.value = {...state.value, components: newComponents};
     },
+    updatePosition: (state, action) => {
+      const { components } = state.value;
+      const { id, top, left } = action.payload;
+      const newComponents = components.map(item => {
+        if (item.id === id) {
+          item.props['top'] = top;
+          item.props['left'] = left;
+          return item
+        }
+        return item;
+      });
+      state.value = {...state.value, components: newComponents};
+    },
     updatePage: (state, action) => {
       const { key, value } = action.payload;
       const { page } = state.value;
@@ -78,7 +85,7 @@ export const userSlice = createSlice({
   }
 });
 
-export const { addItem, setActive, updateItem, updateItemByElementId, updatePage } = userSlice.actions;
+export const { addItem, setActive, updateItem, updateItemByElementId, updatePosition, updatePage } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 

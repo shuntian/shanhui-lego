@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux';
+import { v4 } from 'uuid';
 import { addItem } from '../../../../store/editor-slice';
 import { textTemplates } from '../../../config/parts-config'
 import LText from '../../../parts/LText'
@@ -10,7 +11,12 @@ export default function TextParts() {
 
   const dispatch = useDispatch();
   const onItemClick = useCallback((item) => {
-    dispatch(addItem(item));
+    const insertComponent = {
+      id: v4(),
+      name: 'l-text',
+      props: {...item, height: '36px'},
+    }
+    dispatch(addItem(insertComponent));
   }, [dispatch]);
 
   return (
