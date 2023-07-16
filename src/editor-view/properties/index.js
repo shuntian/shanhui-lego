@@ -1,6 +1,8 @@
+import { BoldOutlined, ItalicOutlined, UnderlineOutlined } from "@ant-design/icons";
 import { InputNumber, Radio, Select, Slider } from "antd";
 import Input from "antd/es/input/Input";
 import TextArea from "antd/es/input/TextArea";
+import IconSwitch from "./icon-switch";
 
 const fontFamilyArr = [
   { text: '宋体', value: '"SimSun","STSong"' },
@@ -67,6 +69,27 @@ export const mapPropsToForms = {
       {value: '', text: '无'},
       ...fontFamilyOptions
     ]
+  },
+  fontWeight: {
+    component: <IconSwitch />,
+    initialTransform: (v) => v === 'bold',
+    afterTransform: (v) => v ? 'bold' : 'normal',
+    valueProp: 'checked',
+    extraProps: { icon: <BoldOutlined />, tip: '加粗'}
+  },
+  fontStyle: {
+    component: <IconSwitch />,
+    initialTransform: (v) => v === 'italic',
+    afterTransform: (v) => v ? 'italic' : 'normal',
+    valueProp: 'checked',
+    extraProps: { icon: <ItalicOutlined />, tip: '斜体'}
+  },
+  textDecoration: {
+    component: <IconSwitch />,
+    initialTransform: (v) => v === 'underline',
+    afterTransform: (v) => v ? 'underline' : 'normal',
+    valueProp: 'checked',
+    extraProps: { icon: <UnderlineOutlined />, tip: '下划线'}
   },
   url: {
     ...defaultHandler,

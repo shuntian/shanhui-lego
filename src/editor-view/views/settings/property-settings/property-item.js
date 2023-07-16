@@ -18,10 +18,11 @@ export default function PropertyItem({item}) {
     });
   }, [SubComponent, options])
 
+  const containerClassName = classNames('prop-item', {'no-text': !item.text})
   const className = classNames('prop-component', item.name);
 
   return (
-    <div className='prop-item'>
+    <div className={containerClassName} id={`item-${item.key}`}>
       <label>{item.text}</label>
       <div className={className}>
         {React.cloneElement(Component, 

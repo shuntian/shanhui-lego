@@ -11,3 +11,16 @@
 .props-container .prop-item .prop-component {
   width: 70%;
 }
+
+.props-container .prop-item.no-text {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+#item-fontWeight {
+  margin-left: 28%;
+}
+
+
+
+

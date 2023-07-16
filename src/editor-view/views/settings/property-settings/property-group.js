@@ -14,6 +14,7 @@ export default function PropertyGroup({props, updatePropItem}) {
     if (item) {
       const { valueProp = 'value', eventName = 'change', initialTransform, afterTransform } = item;
       const newItem = {
+        key: propKey,
         ...item,
         value: initialTransform ? initialTransform(value) : value,
         valueProp,
