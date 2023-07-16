@@ -5,15 +5,16 @@ import { setActive } from '../../store/editor-slice';
 
 export default function PartWrapper({children, item}) {
   const editor = useSelector(state => state.editor.value);
-  const { currentElement } = editor;
+  const { currentElementId } = editor;
 
   const dispatch = useDispatch();
   const onWrapperClick = useCallback(() => {
-    dispatch(setActive(item));
+    dispatch(setActive(item.id));
   }, [dispatch, item]);
+
   const isActive = useMemo(() => {
-    return currentElement?.id === item.id;
-  }, [currentElement, item])
+    return currentElementId === item.id;
+  }, [currentElementId, item])
 
   const className = useMemo(() => {
     return classnames('part-wrapper',{

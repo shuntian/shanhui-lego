@@ -4,6 +4,7 @@ import { addItem } from '../../../store/editor-slice';
 import { textTemplates } from '../../config/parts-config'
 import LText from '../../parts/LText'
 
+import './style.css';
 
 export default function PartList() {
 
@@ -16,8 +17,10 @@ export default function PartList() {
     <div className='parts-container'>
       {textTemplates.map((item, index) => {
         return (
-          <div key={index} onClick={() => onItemClick(item)}>
-            <LText {...item}></LText>
+          <div className='component-item'>
+            <div className='component-wrapper' key={index} onClick={() => onItemClick(item)}>
+              <LText className={'inside-component'} {...item}></LText>
+            </div>
           </div>
         )
       })}

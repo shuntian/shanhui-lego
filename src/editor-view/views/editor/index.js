@@ -17,6 +17,7 @@ export default function Editor() {
         <div className='preview-list' id="canvas-area">
           <div className='body-container' style={{height: '560px'}}>
             {components && components.map(item => {
+              console.log(item);
               return (
                 <PartWrapper 
                   key={item.id} 

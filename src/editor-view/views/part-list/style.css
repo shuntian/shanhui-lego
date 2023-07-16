@@ -1,3 +1,22 @@
 .parts-container {
   
 }
+
+.parts-container .component-item {
+  margin-bottom: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.parts-container .component-wrapper {
+  position: relative;
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.parts-container .inside-component {
+  width: 100% !important;
+  position: static !important;
+}

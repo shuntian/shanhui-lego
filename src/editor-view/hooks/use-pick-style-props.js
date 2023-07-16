@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 export const usePickStyleProps = (props, picks) => {
   const styleProps = useMemo(() => {
-    pick(props, picks)
+    return pick(props, picks)
   }, [picks, props])
 
   return styleProps;

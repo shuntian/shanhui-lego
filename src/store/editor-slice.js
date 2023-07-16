@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 const initState = {
   components: [],
-  currentElement: null,
+  currentElementId: '',
 };
 
 export const userSlice = createSlice({
@@ -25,12 +25,30 @@ export const userSlice = createSlice({
       state.value = {...state.value, components: newComponents};
     },
     setActive: (state, action) => {
-      state.value = {...state.value, currentElement: action.payload};
+      state.value = {...state.value, currentElementId: action.payload};
+    },
+    updateItem: (state, action) => {
+      const { currentElementId, components } = state.value;
+      const newComponents = components.map(item => {
+        if (item.id === currentElementId) {
+          const { key, value } = action.payload;
+          if (Array.isArray(key) && Array.isArray(value)) {
+            key.forEach((keyName, index) => {
+              item.props[keyName] = value[index];
+            });
+          } else if (typeof key === 'string' && typeof value === 'string') {
+            item.props[key] = value;
+          }
+          return item
+        }
+        return item;
+      });
+      state.value = {...state.value, components: newComponents};
     }
   }
 });
 
-export const { addItem, setActive } = userSlice.actions;
+export const { addItem, setActive, updateItem } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 
