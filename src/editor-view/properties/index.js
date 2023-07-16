@@ -190,4 +190,25 @@ export const mapPropsToForms = {
     afterTransform: (e) => e.target.value,
     text: '链接'
   },
+  backgroundRepeat: {
+    text: '背景重复',
+    component: <Select />,
+    subComponent: <Select.Option />,
+    options: [
+      { value: 'no-repeat', text: '无重复' },
+      { value: 'repeat-x', text: 'X轴重复' },
+      { value: 'repeat-y', text: 'Y轴重复' },
+      { value: 'repeat', text: '全部重复' },
+    ]
+  },
+  backgroundSize: {
+    text: '背景大小',
+    component: <Select />,
+    subComponent: <Select.Option />,
+    options: [
+      { value: 'contain', text: '自动缩放' },
+      { value: 'cover', text: '自动填充' },
+      { value: '', text: '默认值' },
+    ]
+  }
 };

@@ -7,7 +7,7 @@ import './style.css';
 
 export default function Editor() {
   const editor = useSelector(state => state.editor.value);
-  const { components } = editor;
+  const { components, page } = editor;
 
   return (
     <div className='editor-wrapper'>
@@ -15,7 +15,7 @@ export default function Editor() {
         <p>画布区域</p>
         <div className='history-list'></div>
         <div className='preview-list' id="canvas-area">
-          <div className='body-container' style={{height: '560px'}}>
+          <div className='body-container' style={page.props}>
             {components && components.map(item => {
               return (
                 <PartWrapper 

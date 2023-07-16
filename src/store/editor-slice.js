@@ -4,6 +4,16 @@ import { v4 } from 'uuid';
 const initState = {
   components: [],
   currentElementId: '',
+  page: {
+    props: { 
+      backgroundColor: '#ffffff', 
+      backgroundImage: '', 
+      backgroundRepeat: 'no-repeat', 
+      backgroundSize: 'cover', 
+      height: '560px' 
+    },
+    title: 'test title',
+  }
 };
 
 export const userSlice = createSlice({
@@ -44,11 +54,20 @@ export const userSlice = createSlice({
         return item;
       });
       state.value = {...state.value, components: newComponents};
+    },
+    updatePage: (state, action) => {
+      const { key, value } = action.payload;
+      const { page } = state.value;
+
+      const props = { ...page.props, [key]: value };
+      console.log(props);
+      const newPage = {...page, props: props};
+      state.value = {...state.value, page: newPage};
     }
   }
 });
 
-export const { addItem, setActive, updateItem } = userSlice.actions;
+export const { addItem, setActive, updateItem, updatePage } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 
