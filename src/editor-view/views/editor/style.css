@@ -1,0 +1,29 @@
+.editor-wrapper .editor {
+  padding: 24px;
+  margin: 0;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.editor-wrapper .preview-list {
+  padding: 0;
+  margin: 0;
+  min-width: 375px;
+  min-height: 200px;
+  border: 1px solid #efefef;
+  background: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  margin-top: 50px;
+  max-height: 80vh;
+}
+
+.editor-wrapper .preview-list .body-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}

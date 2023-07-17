@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBrowserRouter } from 'react-router-dom';
-import Editor from '../pages/editor';
+import EditorPage from '../pages/editor';
 import Login from '../pages/login';
 import Home from '../pages/home';
 import TemplateDetail from '../pages/template-detail';
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/editor/:id',
-    element: <Editor />
+    element: <EditorPage />
   },
   {
     path: '/login',
