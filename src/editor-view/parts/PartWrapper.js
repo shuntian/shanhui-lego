@@ -6,6 +6,50 @@ import { setActive, updatePosition } from '../../store/editor-slice';
 
 import './part-wrapper.css';
 
+const calculateSize = (direction, e, position) => {
+  const { clientX, clientY } = e;
+  const { left, right, top, bottom } = position;
+  const container = document.getElementById('canvas-area');
+  const rightWidth = clientX - left;
+  const leftWidth = right - clientX;
+  const bottomHeight = clientY - top;
+  const topHeight = bottom - clientY;
+  const topOffset = clientY - container.offsetTop + container.scrollTop;
+  const leftOffset = clientX - container.offsetLeft;
+  switch(direction) {
+    case 'top-left': {
+      return {
+        width: leftWidth,
+        height: topHeight,
+        top: topOffset,
+        left: leftOffset,
+      }
+    }
+    case 'top-right': {
+      return {
+        width: rightWidth,
+        height: topHeight,
+        top: topOffset,
+      };
+    }
+    case 'bottom-left': {
+      return {
+        width: leftWidth,
+        height: bottomHeight,
+        left: leftOffset
+      };
+    }
+    case 'bottom-right': {
+      return {
+        width: rightWidth,
+        height: bottomHeight,
+      }
+    }
+    default:
+      break;
+  }
+}
+
 export default function PartWrapper({children, item}) {
   const editor = useSelector(state => state.editor.value);
   const { currentElementId } = editor;
@@ -79,6 +123,38 @@ export default function PartWrapper({children, item}) {
     document.addEventListener('mousemove', handleMove);
     document.addEventListener('mouseup', handleMouseUp);
   }, [])
+
+  const startResize = useCallback((e, direction) => {
+    e.stopPropagation();
+    const wrapperElement = wrapperRef.current;
+    const { left, right, top, bottom } = wrapperElement.getBoundingClientRect();
+
+    const handleMove = (e) => {
+      const size = calculateSize(direction, e, { left, right, top, bottom });
+      const { style } = wrapperElement;
+      if (size) {
+        style.width = size.width + 'px';
+        style.height = size.height + 'px';
+        if (size.left) {
+          style.left = size.left + 'px';
+        }
+        if (size.top) {
+          style.top = size.top + 'px';
+        }
+      }
+    } 
+    const handleMouseUp = (e) => {
+      document.removeEventListener('mousemove', handleMove);
+      const size = calculateSize(direction, e, { left, right, top, bottom});
+      dispatch(updatePosition({id: currentElementId, ...size}));
+      setTimeout(() => {
+        document.removeEventListener('mouseup', handleMouseUp);
+      }, 100);
+    }
+    
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  }, [currentElementId, dispatch]);
     
   return (
     <div 
@@ -90,6 +166,12 @@ export default function PartWrapper({children, item}) {
     >
       <div className='move-wrapper'>
         {children}
+      </div>
+      <div className='resizers'>
+        <div className='resizer top-left' onMouseDown={(e) => startResize(e, 'top-left')}></div>
+        <div className='resizer top-right' onMouseDown={(e) => startResize(e, 'top-right')}></div>
+        <div className='resizer bottom-left' onMouseDown={(e) => startResize(e, 'bottom-left')}></div>
+        <div className='resizer bottom-right' onMouseDown={(e) => startResize(e, 'bottom-right')}></div>
       </div>
     </div>
   )

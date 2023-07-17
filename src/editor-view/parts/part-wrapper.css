@@ -10,3 +10,49 @@
   user-select: none;
   z-index: 1500;
 }
+
+.part-wrapper .l-text-component {
+  position: static !important;
+}
+
+.part-wrapper .resizers {
+  display: none;
+}
+
+.part-wrapper.active .resizers {
+  display: block;
+}
+
+.part-wrapper.active .resizers .resizer {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid #1890ff;
+  position: absolute;
+}
+
+.part-wrapper .resizer.top-left {
+  top: -5px;
+  left: -5px;
+  cursor: nwse-resize;
+}
+
+.part-wrapper .resizer.top-right {
+  top: -5px;
+  right: -5px;
+  cursor: nesw-resize;
+}
+
+.part-wrapper .resizer.bottom-left {
+  bottom: -5px;
+  left: -5px;
+  cursor: nesw-resize;
+  
+}
+
+.part-wrapper .resizer.bottom-right {
+  bottom: -5px;
+  right: -5px;
+  cursor: nwse-resize;
+}

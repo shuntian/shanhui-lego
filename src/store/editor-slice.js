@@ -63,11 +63,21 @@ export const userSlice = createSlice({
     },
     updatePosition: (state, action) => {
       const { components } = state.value;
-      const { id, top, left } = action.payload;
+      const { id, top, left, width, height } = action.payload;
       const newComponents = components.map(item => {
         if (item.id === id) {
-          item.props['top'] = top;
-          item.props['left'] = left;
+          if (top || top === 0) {
+            item.props['top'] = top + 'px';
+          }
+          if (left || left === 0) {
+            item.props['left'] = left + 'px';
+          }
+          if (width || width === 0) {
+            item.props['width'] = width + 'px';
+          }
+          if (height || height === 0) {
+            item.props['height'] = height + 'px';
+          }
           return item
         }
         return item;
