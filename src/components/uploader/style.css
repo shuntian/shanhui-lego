@@ -1,0 +1,26 @@
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-uploader .uploader-area {
+  display: flex;
+  justify-content: center;
+}
+
+.image-uploader .preview-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+}
+
+.image-uploader .preview-list-item {
+  display: flex;
+  height: 48px;
+  line-height: 48px;
+}
+
+.image-uploader .preview-list-item > span {
+  margin-left: 20px;
+}
