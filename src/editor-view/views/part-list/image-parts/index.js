@@ -11,7 +11,7 @@ import './style.css';
 const getImageDimensions = (fileOrUrl) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.src = typeof fileOrUrl === 'string' ? fileOrUrl : URL.createObjectURL(fileOrUrl);
+    img.src = typeof fileOrUrl === 'string' ? fileOrUrl : URL.createObjectURL(fileOrUrl.raw);
     img.addEventListener('load', () => {
       const { naturalWidth: width, naturalHeight: height } = img;
       resolve({ width, height });
@@ -34,7 +34,7 @@ export default function ImageParts() {
       },
     }
     message.success('上传成功')
-    insertComponent.props.src = resp.data.url[0];
+    insertComponent.props.src = resp.data.urls[0];
     getImageDimensions(file).then(({ width }) => {
       const maxWidth = 375;
       insertComponent.props.width = (width > maxWidth ? maxWidth : width) + 'px';
@@ -50,7 +50,7 @@ export default function ImageParts() {
     <div className='image-parts'>
       <div className='file-uploader-container'>
         <Uploader
-          action="/"
+          action="/api/v1/utils/uploader/"
           autoUpload={true}
           listType={'picture'}
           isShowPreviewList={true}
