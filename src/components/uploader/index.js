@@ -53,7 +53,7 @@ export default function Uploader({
     }).then(resp => {
       readyFile.status = UPLOADER_STATE.SUCCESS;
       readyFile.resp = resp.data;
-      onFileUploadSuccess({ resp, file: readyFile });
+      onFileUploadSuccess({ resp: resp.data, file: readyFile });
     }).catch(error => {
       readyFile.status = UPLOADER_STATE.ERROR;
       onFileUploadFailed({ error, file: readyFile });
