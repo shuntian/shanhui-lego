@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import LText from '../../parts/LText';
+import LImage from '../../parts/LImage';
 import PartWrapper from '../../parts/PartWrapper';
 
 import './style.css';
@@ -18,14 +19,26 @@ export default function Editor() {
           <div className='body-container' style={page.props}>
             {components && components.map(item => {
               if (item.isHidden) return null;
-              return (
-                <PartWrapper 
-                  key={item.id} 
-                  item={item}
-                >
-                  <LText {...item.props}/>
-                </PartWrapper>
-              )
+              if (item.name === 'l-text') {
+                return (
+                  <PartWrapper 
+                    key={item.id} 
+                    item={item}
+                  >
+                    <LText {...item.props}/>
+                  </PartWrapper>
+                );
+              }
+              if (item.name === 'l-image') {
+                return (
+                  <PartWrapper 
+                    key={item.id} 
+                    item={item}
+                  >
+                    <LImage props={item.props}/>
+                  </PartWrapper>
+                );
+              }
             })}
           </div>
         </div>

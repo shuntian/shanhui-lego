@@ -27,3 +27,8 @@
   height: 100%;
   background-size: cover;
 }
+
+.editor-wrapper .l-image-component,
+.editor-wrapper .l-text-component {
+  position: static !important;
+}
