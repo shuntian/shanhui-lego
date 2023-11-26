@@ -158,7 +158,7 @@ export const mapPropsToForms = {
     component: <Slider />,
     text: '透明度',
     initialTransform: (v) => v ? v * 100 : 100,
-    afterTransform: (e) => (e / 100),
+    afterTransform: (e) => (e / 100) + '',
     extraProps: { min: 0, max: 100, reverse: true }
   },
   boxShadow: {
