@@ -39,6 +39,7 @@ export default function Editor() {
                   </PartWrapper>
                 );
               }
+              return null;
             })}
           </div>
         </div>

@@ -11,8 +11,13 @@
   z-index: 1500;
 }
 
-.part-wrapper .l-text-component {
+.part-wrapper .l-text-component,
+.part-wrapper .l-image-component {
   position: static !important;
+}
+
+.part-wrapper .l-image-component {
+  pointer-events: none;
 }
 
 .part-wrapper .resizers {

@@ -112,12 +112,10 @@ export default function PartWrapper({children, item}) {
       document.removeEventListener('mousemove', handleMove);
       if (isMoving) {
         const { left, top } = calculateMovePosition(e);
-        dispatch(updatePosition({id: currentElementId, top, left}));
+        dispatch(updatePosition({id: item.id, top, left}));
         isMoving = false;
       }
-      setTimeout(() => {
-        document.removeEventListener('mouseup', handleMouseUp);
-      }, 100);
+      document.removeEventListener('mouseup', handleMouseUp);
     }
 
     document.addEventListener('mousemove', handleMove);

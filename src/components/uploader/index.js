@@ -53,16 +53,30 @@ export default function Uploader({
     }).then(resp => {
       readyFile.status = UPLOADER_STATE.SUCCESS;
       readyFile.resp = resp.data;
+      const newFileList = fileList.map(item => {
+        if (item.id === readyFile.id) {
+          return readyFile;
+        }
+        return item;
+      });
+      setFileList(newFileList);
       onFileUploadSuccess({ resp: resp.data, file: readyFile });
     }).catch(error => {
       readyFile.status = UPLOADER_STATE.ERROR;
+      const newFileList = fileList.map(item => {
+        if (item.id === readyFile.id) {
+          return readyFile;
+        }
+        return item;
+      });
+      setFileList(newFileList);
       onFileUploadFailed({ error, file: readyFile });
     }).finally(() => {
       if (inputRef.current.value) {
         inputRef.current.value = '';
       }
     })
-  }, [action, onFileUploadFailed, onFileUploadSuccess])
+  }, [action, fileList, onFileUploadFailed, onFileUploadSuccess])
 
   const addFileToList = useCallback((uploadFile) => {
     let fileObj = {
