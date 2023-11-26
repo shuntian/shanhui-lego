@@ -5,6 +5,7 @@ import TextArea from "antd/es/input/TextArea";
 import ColorPicker from "./color-picker";
 import IconSwitch from "./icon-switch";
 import ShadowPicker from "./shadow-picker";
+import ImageProcess from "./image-processor";
 
 const fontFamilyArr = [
   { text: '宋体', value: '"SimSun","STSong"' },
@@ -100,6 +101,9 @@ export const mapPropsToForms = {
   backgroundColor: {
     component: <ColorPicker />,
     text: '背景颜色'
+  },
+  src: {
+    component: <ImageProcess />
   },
   width: {
     text: '宽度',
