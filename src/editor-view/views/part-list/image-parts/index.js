@@ -3,7 +3,7 @@ import { imageDefaultProps } from 'lego-bricks';
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
-import Uploader from '../../../../components/uploader'
+import { Uploader } from '../../../../components/uploader'
 import { addItem } from '../../../../store/editor-slice';
 
 import './style.css';

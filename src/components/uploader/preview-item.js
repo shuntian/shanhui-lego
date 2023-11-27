@@ -1,6 +1,6 @@
 import { DeleteOutlined, FileOutlined, LoadingOutlined } from '@ant-design/icons'
 import React from 'react'
-import { UPLOADER_STATE } from '.'
+import { UPLOADER_STATE } from './Uploader'
 
 export default function PreviewItem({item, listType, removeFile}) {
   return (

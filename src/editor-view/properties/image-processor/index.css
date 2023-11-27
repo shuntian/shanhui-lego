@@ -1,0 +1,32 @@
+.prop-component.component-image-processor {
+  width: 100% !important;
+}
+.image-processor {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-processor .image-preview {
+  width: 150px;
+  height: 84px;
+  border: 1px dashed #e6ebed;
+  background: no-repeat 50%/contain;
+}
+
+.image-processor .image-process {
+  padding: 5px 0;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image-cropper {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.image-cropper > img {
+  opacity: 1 !important;
+}
