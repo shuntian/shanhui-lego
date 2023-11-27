@@ -60,6 +60,22 @@ export default function PropertySettings() {
     console.log(key);
   }, []);
 
+  if (!currentElement) {
+    return (
+      <div className='props-container'>
+        <Empty description="在画布中选择元素并开始编辑"/>
+      </div>
+    )
+  }
+
+  if (currentElement.isLocked) {
+    return (
+      <div className='props-container'>
+        <Empty description="当前元素被锁定,无法编辑"/>
+      </div>
+    );
+  }
+
   return (
     <div className='props-container'>
       {!currentElement && <Empty description="在画布中选择元素并开始编辑"/>}

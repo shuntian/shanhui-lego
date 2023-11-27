@@ -28,3 +28,7 @@
   cursor: move;
   margin-left: auto;
 }
+
+.layer-setting-container .layer-list li.active {
+  border: 1px solid #9ed6ab;
+}
