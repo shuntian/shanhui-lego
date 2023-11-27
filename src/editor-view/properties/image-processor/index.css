@@ -20,3 +20,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.image-cropper {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.image-cropper > img {
+  opacity: 1 !important;
+}
