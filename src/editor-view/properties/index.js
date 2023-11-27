@@ -103,7 +103,8 @@ export const mapPropsToForms = {
     text: '背景颜色'
   },
   src: {
-    component: <ImageProcess />
+    component: <ImageProcess />,
+    name: 'component-image-processor',
   },
   width: {
     text: '宽度',
