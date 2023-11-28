@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { arrayMoveImmutable, arrayMoveMutable } from 'array-move';
+import { constant } from "lodash-es";
 
 const initState = {
   components: [],
@@ -91,11 +93,17 @@ export const userSlice = createSlice({
       const props = { ...page.props, [key]: value };
       const newPage = {...page, props: props};
       state.value = {...state.value, page: newPage};
+    },
+    updateComponentsSort: (state, action) => {
+      const { components } = state.value;
+      const { sourceIndex, targetIndex } = action.payload;
+      const newComponents = arrayMoveImmutable(components, sourceIndex, targetIndex);
+      state.value = {...state.value, components: newComponents};
     }
   }
 });
 
-export const { addItem, setActive, updateItem, updateItemByElementId, updatePosition, updatePage } = userSlice.actions;
+export const { addItem, setActive, updateItem, updateItemByElementId, updatePosition, updatePage, updateComponentsSort } = userSlice.actions;
 
 const editorReducer = userSlice.reducer;
 

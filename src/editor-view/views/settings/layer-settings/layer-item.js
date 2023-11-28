@@ -1,15 +1,17 @@
 import { DragOutlined, EyeInvisibleOutlined, EyeOutlined, LockOutlined, UnlockOutlined } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
 import classNames from 'classnames';
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { setActive, updateItemByElementId } from '../../../../store/editor-slice';
 import { useCurrentElement } from '../../../hooks/use-current-element';
 import InlineEditor from './inline-editor';
 
-export default function LayerItem({item}) {
+export default function LayerItem({item, index}) {
 
   const currentElement = useCurrentElement();
+
+  const [dragItemId, setDragItemId] = useState('');
 
   const dispatch = useDispatch();
   const handleHiddenChange = useCallback(() => {
@@ -28,10 +30,30 @@ export default function LayerItem({item}) {
     dispatch(setActive({ id: item.id }));
   }, [dispatch, item.id])
 
-  const className = classNames('layer-item', { 'active': currentElement?.id === item.id});
+  const onDragStart = (event, id, index) => {
+    setDragItemId(id);
+    event.dataTransfer.setData('index', index);
+  }
+
+  const onDragEnd = (event) => {
+    setDragItemId('');
+  }
+
+  const className = classNames(
+    'layer-list-item', 
+    { 'active': currentElement?.id === item.id },
+    { 'ghost':  dragItemId === item.id}
+  );
   
   return (
-    <li className={className} onClick={onLayerClick}>
+    <li 
+      className={className} 
+      data-index={index}
+      onClick={onLayerClick} 
+      draggable="true" 
+      onDragStart={(event) => onDragStart(event, item.id, index)}
+      onDragEnd={onDragEnd}
+    >
       <Tooltip title={item.isHidden ? '显示' : '隐藏'}>
         <Button type='default' shape='circle' onClick={handleHiddenChange}>
           {item.isHidden ? <EyeOutlined /> : <EyeInvisibleOutlined />}

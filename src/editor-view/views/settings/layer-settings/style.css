@@ -32,3 +32,7 @@
 .layer-setting-container .layer-list li.active {
   border: 1px solid #9ed6ab;
 }
+
+.ghost {
+  opacity: .5;
+}
