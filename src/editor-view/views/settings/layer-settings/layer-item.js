@@ -27,7 +27,7 @@ export default function LayerItem({item, index}) {
   }, [dispatch, item.id])
   
   const onLayerClick = useCallback(() => {
-    dispatch(setActive({ id: item.id }));
+    dispatch(setActive(item.id));
   }, [dispatch, item.id])
 
   const onDragStart = (event, id, index) => {
