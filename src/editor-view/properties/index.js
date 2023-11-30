@@ -6,6 +6,7 @@ import ColorPicker from "./color-picker";
 import IconSwitch from "./icon-switch";
 import ShadowPicker from "./shadow-picker";
 import ImageProcess from "./image-processor";
+import BackgroundProcessor from "./background-processor";
 
 const fontFamilyArr = [
   { text: '宋体', value: '"SimSun","STSong"' },
@@ -215,5 +216,11 @@ export const mapPropsToForms = {
       { value: 'cover', text: '自动填充' },
       { value: '', text: '默认值' },
     ]
+  },
+  backgroundImage: {
+    text: '背景图片',
+    component: <BackgroundProcessor />,
+    initialTransform: (v) => v, 
+    afterTransform: (e) => e,
   }
 };

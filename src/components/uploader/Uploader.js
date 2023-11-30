@@ -74,7 +74,7 @@ export default function Uploader({
       setFileList(newFileList);
       onFileUploadFailed({ error, file: readyFile });
     }).finally(() => {
-      if (inputRef.current.value) {
+      if (inputRef && inputRef.current.value) {
         inputRef.current.value = '';
       }
     })

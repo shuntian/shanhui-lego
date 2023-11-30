@@ -10,13 +10,17 @@ export default function Editor() {
   const editor = useSelector(state => state.editor.value);
   const { components, page } = editor;
 
+  const pageStyle = {
+    ...page.props,
+    ...(page.props['backgroundImage'] && {backgroundImage: `url(${page.props['backgroundImage']})`})
+  }
   return (
     <div className='editor-wrapper'>
       <div className='editor'>
         <p>画布区域</p>
         <div className='history-list'></div>
         <div className='preview-list' id="canvas-area">
-          <div className='body-container' style={page.props}>
+          <div className='body-container' style={pageStyle}>
             {components && components.map(item => {
               if (item.isHidden) return null;
               if (item.name === 'l-text') {
