@@ -1,20 +1,36 @@
+import { unwrapResult } from '@reduxjs/toolkit';
 import { Button, Checkbox, Form, Input, message } from 'antd';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { loginAsync } from '../../store/user-slice';
+import { loginApp } from '../../store/user-slice';
 
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.value)
+
+  useEffect(() => {
+    if (user.isLogin) {
+      navigate('/');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const onFinish = useCallback((values) => {
-    dispatch(loginAsync(values.username));
-    message.success('登陆成功, 2s后跳转');
-    setTimeout(() => {
-      navigate('/')
-    }, 2000)
-  }, []);
+    dispatch(loginApp(values)).then((data) => {
+      if (data.errno === 0) {
+        message.success('登陆成功, 2s后跳转');
+        setTimeout(() => {
+          navigate('/')
+        }, 2000)
+      }
+    }).catch(err => {
+      message.error('登陆出错');
+    });
+  }, [dispatch, navigate]);
+
   const onFinishFailed = useCallback((errorInfo) => {
     console.log('Failed:', errorInfo);
   }, []);

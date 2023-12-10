@@ -26,7 +26,7 @@ export default function LegoHeader() {
 
   const onMenuClick = useCallback((e) => {
     if (e.key === 'logout') {
-      dispatch(logout)
+      dispatch(logout())
       nav('/login')
     }
     if (e.key === 'user-setting') {
